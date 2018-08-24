@@ -41,6 +41,7 @@ export default class QRCodeScanner extends Component {
     permissionDialogTitle: PropTypes.string,
     permissionDialogMessage: PropTypes.string,
     checkAndroid6Permissions: PropTypes.bool,
+    flashMode: PropTypes.string,
   };
 
   static defaultProps = {
@@ -51,6 +52,7 @@ export default class QRCodeScanner extends Component {
     fadeIn: true,
     showMarker: false,
     cameraType: 'back',
+    flashMode: 'off',
     notAuthorizedView: (
       <View
         style={{
@@ -219,6 +221,7 @@ export default class QRCodeScanner extends Component {
           >
             <Camera
               style={[styles.camera, this.props.cameraStyle]}
+              flashMode={this.props.flashMode}
               onBarCodeRead={this._handleBarCodeRead.bind(this)}
               type={this.props.cameraType}
             >
@@ -231,6 +234,7 @@ export default class QRCodeScanner extends Component {
         <Camera
           type={cameraType}
           style={[styles.camera, this.props.cameraStyle]}
+          flashMode={this.props.flashMode}
           onBarCodeRead={this._handleBarCodeRead.bind(this)}
         >
           {this._renderCameraMarker()}
